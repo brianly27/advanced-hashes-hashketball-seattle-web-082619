@@ -78,7 +78,7 @@ def game_hash
       :blocks => 7,
       :slam_dunks => 2
       },
-      {:player_name => "Bismack Biyombo",
+      {:player_name = "Bismack Biyombo",
       :number => 0,
       :shoe => 16,
       :points => 12,
@@ -173,9 +173,11 @@ def num_points_scored(player)
     keys[:players].each do |profile|
       if profile[:player_name] == player
         return profile[:points]
+<<<<<<< HEAD
       end #if
     end #keys[:players]
   end #game_hash
+  #return "didnt find player's name" (if player was not found, the loop ends, and code gets to the return statement)
 end
 
  def shoe_size(player)
@@ -206,8 +208,9 @@ def player_numbers(team)
   player_numbers = []
   game_hash.each do |location, keys|
     if keys[:team_name] == team
-      keys[:players].each do |profile|
+      keys[:players].each do |profile| #or keys[:team].map do |profile| because map outputs an array.
         player_numbers.push(profile[:number])
+
       end #keys
     end #if
   end #game_hash
@@ -254,14 +257,15 @@ end
 def winning_team
   winner = ""
   winning_total = 0
-  total = 0
+
   game_hash.each do |location, keys|
       total = 0
+
       keys[:players].reduce(total) do |memo, profile|
 
       total += profile[:points]
       memo
-    end #keys[:players].reduce
+      end #keys[:players].reduce
 
     if total > winning_total
       winning_total = total
@@ -301,3 +305,12 @@ def long_name_steals_a_ton?
   end #game_hash
   longest == steals ? true : false
 end
+=======
+
+      end #if
+    end #keys[:players].each
+  end #game_hash
+end
+
+
+>>>>>>> 9b504f02923e3c60f873453887c7d22c4bc21769
